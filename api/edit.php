@@ -18,13 +18,13 @@ foreach ($_POST['id'] as $key => $id) {
         
             case 'news':
             case 'mvim':
-                $data['sh'] = (isset($_POST['del']) && in_array($id,$_POST['del']))?1:0;
+                $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
 
             break;    
 
             case 'image':
             case 'ad':
-                $data['sh'] = (isset($_POST['del']) && in_array($id,$_POST['del']))?1:0;
+                $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
                 $data['text'] = $_POST['text'][$key];
 
             break;
@@ -38,7 +38,7 @@ foreach ($_POST['id'] as $key => $id) {
             break;
             case 'menu':
 
-                $data['sh'] = (isset($_POST['del']) && in_array($id,$_POST['del']))?1:0;
+                $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
                 $data['text'] = $_POST['text'][$key];
                 $data['href'] = $_POST['href'][$key];
                 
