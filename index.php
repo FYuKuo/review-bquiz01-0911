@@ -97,6 +97,25 @@ $do = ($_GET['do'])??'main';
 			?>
     </div>
 
+
+<script>
+
+    $(".mainmu").mouseover(
+		function()
+		{
+			$(this).children(".mw").stop().show()
+		}
+	)
+	$(".mainmu").mouseout(
+		function ()
+		{
+			$(this).children(".mw").hide()
+		}
+	)
+
+</script>
+
+    
 </body>
 
 </html>
