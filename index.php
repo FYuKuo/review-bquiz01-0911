@@ -31,6 +31,34 @@ include('./api/base.php');
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
 
+                    <?php
+                    $menus = $Menu->all(['parent'=>0]);
+                    foreach ($menus as $key => $menu) {
+                    ?>
+                    <div class="big_out">
+                        <a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$menu['href']?>">
+                            <div class="mainmu cup">
+                                <?=$menu['text']?>
+                            </div>
+                            </a>
+                        <div class="mid_out d-n">
+                        <?php
+                        $mids = $Menu->all(['parent'=>$menu['id']]);
+                        foreach ($mids as $key => $mid) {
+                        ?>
+                                <a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$mid['href']?>">
+                                    <div class="mainmu2 cup">
+                                    <?=$mid['text']?>
+                                </div>
+                                </a>
+                            <?php
+                        }
+                        ?>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
 
                 </div>
 
@@ -99,24 +127,20 @@ include('./api/base.php');
     </div>
 
 
-<script>
+    <script>
+    $(".big_out").mouseover(
+        function() {
+            $(this).children(".mid_out").show()
+        }
+    )
+    $(".big_out").mouseout(
+        function() {
+            $(this).children(".mid_out").hide()
+        }
+    )
+    </script>
 
-    $(".mainmu").mouseover(
-		function()
-		{
-			$(this).children(".mw").stop().show()
-		}
-	)
-	$(".mainmu").mouseout(
-		function ()
-		{
-			$(this).children(".mw").hide()
-		}
-	)
 
-</script>
-
-    
 </body>
 
 </html>

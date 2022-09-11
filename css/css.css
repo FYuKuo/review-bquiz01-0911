@@ -174,6 +174,10 @@ input:focus,button:focus
 	display: flex;
 }
 
+.d-n {
+	display: none;
+}
+
 .a-c {
 	align-items: center;
 }
@@ -236,4 +240,20 @@ input:focus,button:focus
 
 .nowPage {
 	font-size: 1.5rem;
+}
+
+.cup {
+	cursor: pointer;
+}
+
+.big_out {
+	position: relative;
+}
+
+.mid_out {
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	right: -130px;
+	top:10px;
 }
