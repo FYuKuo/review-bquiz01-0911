@@ -158,7 +158,7 @@ class STR
                 $this->aH = "新增管理者帳號";
                 $this->aT = ["帳號：","密碼：","確認密碼："];
             break;
-            case 'bottom':
+            case 'total':
                 $this->h = "進站總人數管理";
                 $this->t = ["進站總人數："];
             break;
@@ -209,7 +209,7 @@ class STR
                 $this->aH = "新增標題區圖片";
                 $this->aT = ["標題區圖片：","標題區替代文字："];
             break;
-            case 'total':
+            case 'bottom':
                 $this->h = "頁尾版權資料管理";
                 $this->t = ["頁尾版權資料："];
             break;
