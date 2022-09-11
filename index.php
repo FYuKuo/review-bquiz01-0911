@@ -32,7 +32,7 @@ include('./api/base.php');
                     <span class="t botli">主選單區</span>
 
                     <?php
-                    $menus = $Menu->all(['parent'=>0]);
+                    $menus = $Menu->all(['sh'=>1,'parent'=>0]);
                     foreach ($menus as $key => $menu) {
                     ?>
                     <div class="big_out">
@@ -43,7 +43,7 @@ include('./api/base.php');
                             </a>
                         <div class="mid_out d-n">
                         <?php
-                        $mids = $Menu->all(['parent'=>$menu['id']]);
+                        $mids = $Menu->all(['sh'=>1,'parent'=>$menu['id']]);
                         foreach ($mids as $key => $mid) {
                         ?>
                                 <a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$mid['href']?>">
@@ -96,16 +96,33 @@ include('./api/base.php');
                 </button>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+                    <br>
+                    <div class="ct cup"><img src="./icon/up.jpg" alt="" onclick="pp(1)"></div>
+                    <br>
+                    <?php
+                    $images = $Image->all(['sh'=>1]);
+                    foreach ($images as $key => $image) {
+                    ?>
+                    <div class="ct im" id="ssaa<?=$key?>">
+                        <img src="./img/<?=$image['img']?>" alt="" style="width: 150px; height:103px">
+                    </div>
+                    <?php
+                    }
+                    ?>
+
+                    <br>
+                    <div class="ct cup"><img src="./icon/dn.jpg" alt="" onclick="pp(2)"></div>
+
                     <script>
                     var nowpage = 0,
-                        num = 0;
+                        num = <?=count($images)?>;
 
                     function pp(x) {
                         var s, t;
                         if (x == 1 && nowpage - 1 >= 0) {
                             nowpage--;
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                        if (x == 2 &&  nowpage+3 < num ) {
                             nowpage++;
                         }
                         $(".im").hide()

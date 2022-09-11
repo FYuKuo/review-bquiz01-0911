@@ -1,6 +1,55 @@
-<div style="text-align:center;">
-    <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-    <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+<?php
+$num = $News->math('COUNT','id');
+$limit = 5;
+$pages = ceil($num/$limit);
+$page = ($_GET['page'])??1;
+if($page <= 0 || $page > $pages){
+    $page = 1;
+}
+$start = ($page-1)*$limit;
+$limitSql = " LIMIT $start,$limit";
+$news = $News->all($limitSql);
+?>
+
+<span class="t botli d-f j-b">
+    <span>
+        更多最新消息區顯示區
+    </span>
+
+</span>
+
+<ol class="sswww" style="list-style-type:decimal;" start="<?=$start+1?>">
+    <?php
+        foreach ($news as $key => $new) {
+        ?>
+    <li>
+        <?=mb_substr($new['text'],0,20)?>
+        <div class="all d-n"><?=$new['text']?></div>
+    </li>
+    <?php
+        }
+        ?>
+
+</ol>
+
+<div class="page ct">
+    <?php
+            if($page > 1){
+            ?>
+    <a href="?do=<?=$do?>&page=<?=$page-1?>">&lt;</a>
+    <?php
+            }
+            for ($i=1; $i <= $pages ; $i++) { 
+            ?>
+    <a href="?do=<?=$do?>&page=<?=$i?>" class="<?=($page == $i)?'nowPage':''?>"><?=$i?></a>
+    <?php
+            }
+            if($page < $pages){
+            ?>
+    <a href="?do=<?=$do?>&page=<?=$page+1?>">&gt;</a>
+    <?php
+            }
+            ?>
 </div>
 
 <div id="alt"
@@ -8,15 +57,15 @@
 </div>
 
 <script>
-$(".sswww").hover(
+$(".sswww li").hover(
     function() {
-        $("#alt").html("" + $(this).children(".all").html() + "").css({
+        $("#alt").html("<pre>" + $(this).children(".all").html() + "</pre>").css({
             "top": $(this).offset().top - 50
         })
         $("#alt").show()
     }
 )
-$(".sswww").mouseout(
+$(".sswww li").mouseout(
     function() {
         $("#alt").hide()
     }
