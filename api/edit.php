@@ -16,13 +16,13 @@ foreach ($_POST['id'] as $key => $id) {
                 $data['sh'] = ($_POST['sh'] == $id)?1:0;
             break;
         
-            case 'news':
+            case 'image':
             case 'mvim':
                 $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
 
             break;    
 
-            case 'image':
+            case 'news':
             case 'ad':
                 $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
                 $data['text'] = $_POST['text'][$key];
