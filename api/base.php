@@ -127,6 +127,99 @@ class DB
 }
 
 
+class STR
+{
+    protected $table;
+    public $h;
+    public $t;
+    public $aH;
+    public $aT;
+    public $aB;
+    public $uH;
+    public $uT;
+    public $uB;
+
+    public function __construct($table)
+    {
+        $this->table = $table;
+
+        switch ($table) {
+            case 'ad':
+                $this->h = "動態文字廣告管理";
+                $this->t = ["動態文字廣告"];
+                $this->aB = "新增動態文字廣告";
+                $this->aH = "新增動態文字廣告";
+                $this->aT = ["動態文字廣告："];
+            break;
+            case 'admin':
+                $this->h = "管理者帳號管理";
+                $this->t = ["帳號","密碼"];
+                $this->aB = "新增管理者帳號";
+                $this->aH = "新增管理者帳號";
+                $this->aT = ["帳號：","密碼：","確認密碼："];
+            break;
+            case 'bottom':
+                $this->h = "進站總人數管理";
+                $this->t = ["進站總人數："];
+            break;
+            case 'image':
+                $this->h = "校園映像資料管理";
+                $this->t = ["校園映像資料圖片"];
+                $this->uB = "更換圖片";
+                $this->uH = "更新校園映像圖片";
+                $this->uT = ["校園映像圖片："];
+                $this->aB = "新增校園映像圖片";
+                $this->aH = "新增校園映像圖片";
+                $this->aT = ["校園映像圖片："];
+            break;
+            case 'menu':
+                $this->h = "選單管理";
+                $this->t = ["主選單名稱","選單連結網址","次選單數"];
+                $this->uB = "編輯次選單";
+                $this->uH = "編輯次選單";
+                $this->uT = ["次選單名稱","次選單連結網址","刪除","更多選單"];
+                $this->aB = "新增主選單";
+                $this->aH = "新增主選單";
+                $this->aT = ["主選單名稱：","選單連結網址："];
+            break;
+            case 'mvim':
+                $this->h = "動畫圖片管理";
+                $this->t = ["動畫圖片"];
+                $this->uB = "更新動畫";
+                $this->uH = "更新動畫圖片";
+                $this->uT = ["動畫圖片："];
+                $this->aB = "新增動畫圖片";
+                $this->aH = "新增動畫圖片";
+                $this->aT = ["動畫圖片："];
+            break;
+            case 'news':
+                $this->h = "最新消息資料管理";
+                $this->t = ["最新消息資料內容"];
+                $this->aB = "新增最新消息資料";
+                $this->aH = "新增最新消息資料";
+                $this->aT = ["最新消息資料："];
+            break;
+            case 'title':
+                $this->h = "網站標題管理";
+                $this->t = ["網站標題","替代文字"];
+                $this->uB = "更新圖片";
+                $this->uH = "更新標題區圖片";
+                $this->uT = ["標題區圖片："];
+                $this->aB = "新增網站標題區圖片";
+                $this->aH = "新增標題區圖片";
+                $this->aT = ["標題區圖片：","標題區替代文字："];
+            break;
+            case 'total':
+                $this->h = "頁尾版權資料管理";
+                $this->t = ["頁尾版權資料："];
+            break;
+            
+        }
+    }
+}
+
+
+
 
 
 
@@ -141,5 +234,21 @@ function dd($array)
     print_r($array);
     echo "</pre>";
 }
+
+
+if(isset($do)){
+    $STR = new STR($do);
+}
+
+$Ad = new DB('ad');
+$Admin = new DB('admin');
+$Bottom = new DB('bottom');
+$Image = new DB('image');
+$Menu = new DB('menu');
+$Mvim = new DB('mvim');
+$News = new DB('news');
+$Title = new DB('title');
+$Total = new DB('total');
+
 
 ?>
