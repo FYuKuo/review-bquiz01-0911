@@ -1,6 +1,10 @@
 ﻿<?php
 $do = ($_GET['do'])??'title';
 include('./api/base.php');
+if(!isset($_SESSION['admin'])){
+    to('./index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -94,7 +98,7 @@ include('./api/base.php');
                                 </a>
                             </td>
                             <td>
-                                <button onclick="document.cookie='user=';location.replace('?')"
+                                <button onclick="lo('./api/logout.php')"
                                     style="width:99%; margin-right:2px; height:50px;">
                                     管理登出
                                 </button>

@@ -250,5 +250,17 @@ $News = new DB('news');
 $Title = new DB('title');
 $Total = new DB('total');
 
+if(!isset($_SESSION['total'])){
+    $total = $Total->find(1);
+    $total['text']++;
+    $Total->save($total);
+    $_SESSION['total'] = 1;
+}
 
+function alert($str)
+{
+    echo "<script>";
+    echo "alert('$str')";
+    echo "</script>";
+}
 ?>
